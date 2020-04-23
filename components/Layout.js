@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { theme } from '../style/theme';
 
 const Layout = ({ children }) => {
   return (
@@ -10,6 +11,49 @@ const Layout = ({ children }) => {
         />
       </Head>
       <main>{children}</main>
+
+      <style jsx global>
+        {`
+          body {
+            background-color: ${theme.color.background.primary};
+          }
+          button {
+            background-color: ${theme.color.primary};
+            border: none;
+            color: ${theme.color.text};
+            border-radius: 5px;
+            padding: 0.5rem 3rem;
+          }
+          h1,
+          h2,
+          h3,
+          h4,
+          p {
+            color: ${theme.color.text};
+          }
+
+          h1 {
+            font-family: Helvetica;
+            font-style: normal;
+            font-weight: bold;
+            font-size: 55px;
+            line-height: 66px;
+          }
+
+          .fade-in {
+            animation: fadein 2s;
+          }
+
+          @keyframes fadein {
+            from {
+              opacity: 0;
+            }
+            to {
+              opacity: 1;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
