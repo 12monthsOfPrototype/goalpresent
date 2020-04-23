@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
         />
       </Head>
       <main>{children}</main>
-
+      <footer></footer>
       <style jsx global>
         {`
           body {
@@ -42,6 +42,11 @@ const Layout = ({ children }) => {
 
           .fade-in {
             animation: fadein 2s;
+          }
+
+          footer {
+            background-color: ${theme.color.primary};
+            height: 5vh;
           }
 
           @keyframes fadein {
