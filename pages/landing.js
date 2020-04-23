@@ -1,17 +1,18 @@
 import Layout from '../components/Layout';
+import Stepps from '../components/landingpage/Stepps';
+import Hero from '../components/landingpage/Hero';
+import Numbers from '../components/landingpage/Numbers';
+import { theme } from '../style/theme';
 
 const landing = () => {
   return (
-    <Layout>
-      <div className="container-fluid">
-        <h1>
-          <span>Goalpresent</span> - The easy way to achieve your goals
-        </h1>
-
-        <button>Leanr more</button>
-        <button>Sign up</button>
-      </div>
-    </Layout>
+    <>
+      <Layout>
+        <Hero />
+        <Stepps />
+        <Numbers />
+      </Layout>
+    </>
   );
 };
 
