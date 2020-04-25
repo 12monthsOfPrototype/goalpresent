@@ -24,7 +24,7 @@ const index = () => {
                 placeholder="Enter your 1-year goal"
               ></textarea>
               <div>
-                <Link href="/second" className="link">
+                <Link href="/goal/quarter" className="link">
                   <a>Next Step</a>
                 </Link>
               </div>
@@ -67,6 +67,10 @@ const index = () => {
             margin-left: 0.5rem;
             border-radius: 33px;
             padding: 0.5rem 0.7rem;
+          }
+
+          a:hover {
+            text-decoration: none;
           }
         `}
       </style>

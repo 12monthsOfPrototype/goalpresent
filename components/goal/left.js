@@ -22,7 +22,7 @@ const left = ({ heading, number, progress }) => {
       <style jsx>{`
         .left {
           background-color: ${theme.color.background.tertiary};
-          height: 100%;
+          min-height: 95vh;
           border-radius: ${theme.sizing.border.large};
           display: flex;
           flex-direction: column;
