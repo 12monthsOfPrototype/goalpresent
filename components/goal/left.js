@@ -3,7 +3,7 @@ import { theme } from '../../style/theme';
 const left = ({ heading, number, progress }) => {
   return (
     <>
-      <div className="col-sm-12 col-md-5 left">
+      <div className="col-sm-12 col-md-4 left">
         <h1>{number}</h1>
         <h2>{heading}</h2>
         <div className="my-5">

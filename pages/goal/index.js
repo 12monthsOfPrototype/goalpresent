@@ -15,7 +15,7 @@ const index = () => {
               heading="What is your Goal for the next year?"
               progress={1}
             ></Left>
-            <div className="col-sm-12 col-md-7 right">
+            <div className="col-sm-12 col-md-8 right">
               <textarea
                 name="one-year-goal"
                 id="one-yea"

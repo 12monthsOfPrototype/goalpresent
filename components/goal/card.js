@@ -3,7 +3,7 @@ import { theme } from '../../style/theme';
 const card = ({ children }) => {
   return (
     <>
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="card-custom fade-in">{children}</div>
         </div>
@@ -11,11 +11,12 @@ const card = ({ children }) => {
 
       <style jsx>
         {`
-          .container {
+          .container-fluid {
             min-height: calc(105vh - 5vh);
             display: flex;
             flex-direction: column;
             justify-content: center;
+            max-width: 85vw;
           }
 
           .card-custom {

@@ -38,12 +38,12 @@ const quarter = () => {
               heading="What do you need to achieve in the next 4 quarters?"
               progress={2}
             ></Left>
-            <div className="col-sm-12 col-md-7">
+            <div className="col-sm-12 col-md-8">
               <div className="row p-4 section">
                 <h3>
                   How do you achieve your Key Result in the first quarter?
                 </h3>
-                <div className="p-2 mt-3">
+                <div className="p-1 mt-3">
                   <h4>Goal</h4>
                   <p>
                     Consectetur cupidatat consectetur reprehenderit consectetur
@@ -53,7 +53,7 @@ const quarter = () => {
                   </p>
                 </div>
               </div>
-              <div className="row my-5 pb-5">
+              <div className="row my-3">
                 <KeyResult
                   keyResults={firstKeyResults}
                   setKeyResults={setFirstKeyResults}
@@ -75,6 +75,18 @@ const quarter = () => {
                   setKeyResults={setFourthKeyResults}
                   number={4}
                 />
+              </div>
+              <div className="row mt-5 px-4">
+                <div className="col-md-6">
+                  <Link href="/goal/quarter">
+                    <a className="link-back">Back</a>
+                  </Link>
+                </div>
+                <div className="col-md-6 text-right">
+                  <Link href="/goal/quarter">
+                    <a className="link">Next Step</a>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -101,7 +113,15 @@ const quarter = () => {
             font-size: 1.5rem;
           }
 
-          a:after {
+          .link-back:before {
+            content: '⬅';
+            background-color: ${theme.color.primary};
+            margin-right: 0.5rem;
+            border-radius: 33px;
+            padding: 0.5rem 0.7rem;
+          }
+
+          .link:after {
             content: '➡';
             background-color: ${theme.color.primary};
             margin-left: 0.5rem;
