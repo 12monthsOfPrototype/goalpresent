@@ -1,11 +1,17 @@
 import { theme } from '../../style/theme';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 
-const keyResult = ({ keyResults, setKeyResults, number }) => {
+const keyResult = ({
+  keyResults,
+  setKeyResults,
+  number,
+  heading,
+  placeholder,
+}) => {
   return (
     <>
       <div className="col-md-2">
-        <p>Key Result for the {number} Quarter:</p>
+        <p>{heading}:</p>
       </div>
       <div className="col-md-10">
         {keyResults.map((result, index) => {
@@ -16,7 +22,7 @@ const keyResult = ({ keyResults, setKeyResults, number }) => {
                 type="text"
                 name="key-result"
                 id="key-result"
-                placeholder="What do I need to acompolish in the 1st quarter to achieve my goal?"
+                placeholder={placeholder}
                 defaultValue={result.text}
                 onChange={(e) => {
                   const stateCopy = keyResults;
@@ -26,12 +32,14 @@ const keyResult = ({ keyResults, setKeyResults, number }) => {
               />
               <RiDeleteBin6Line
                 color={theme.color.primary}
-                className="mx-3"
+                className={keyResults.length === 1 ? 'd-none' : 'mx-3'}
                 onClick={() => {
-                  const newKeyResults = [...keyResults];
-                  if (index !== -1) {
-                    newKeyResults.splice(index, 1);
-                    setKeyResults(newKeyResults);
+                  if (keyResults.length > 1) {
+                    const newKeyResults = [...keyResults];
+                    if (index !== -1) {
+                      newKeyResults.splice(index, 1);
+                      setKeyResults(newKeyResults);
+                    }
                   }
                 }}
               />

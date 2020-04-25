@@ -18,7 +18,7 @@ const index = () => {
             <div className="col-sm-12 col-md-8 right">
               <textarea
                 name="one-year-goal"
-                id="one-yea"
+                id="one-year"
                 cols="30"
                 rows="10"
                 placeholder="Enter your 1-year goal"
@@ -37,7 +37,7 @@ const index = () => {
           .right {
             display: flex;
             flex-direction: column;
-            height: 100%;
+            min-height: 100%;
             align-items: center;
             justify-content: center;
           }

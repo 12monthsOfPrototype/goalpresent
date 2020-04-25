@@ -28,7 +28,9 @@ const Layout = ({ children }) => {
           h2,
           h3,
           h4,
-          p {
+          h5,
+          p,
+          a {
             color: ${theme.color.text};
           }
 
