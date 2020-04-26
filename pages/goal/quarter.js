@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
 import Layout from '../../components/Layout';
+import Buttons from '../../components/goal/buttons';
 import Card from '../../components/goal/card';
 import Left from '../../components/goal/left';
 import { theme } from '../../style/theme';
@@ -84,18 +84,10 @@ const quarter = () => {
                   placeholder="What do I need to acompolish in the 4st month to achieve my goal?"
                 />
               </div>
-              <div className="row mt-5 px-4">
-                <div className="col-md-6">
-                  <Link href="/goal">
-                    <a className="link-back">Back</a>
-                  </Link>
-                </div>
-                <div className="col-md-6 text-right">
-                  <Link href="/goal/quarter">
-                    <a className="link">Next Step</a>
-                  </Link>
-                </div>
-              </div>
+              <Buttons
+                nextLink="/goal/first-quarter"
+                hasBackButton={true}
+              ></Buttons>
             </div>
           </div>
         </Card>

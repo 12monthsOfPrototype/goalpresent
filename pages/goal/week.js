@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Buttons from '../../components/goal/buttons';
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
 import Left from '../../components/goal/left';
@@ -132,18 +132,7 @@ const week = () => {
                   placeholder="What do I need to acomplish on Sunday  to achieve your key results for the week?"
                 />
               </div>
-              <div className="row mt-5 px-4">
-                <div className="col-md-6">
-                  <Link href="/goal">
-                    <a className="link-back">Back</a>
-                  </Link>
-                </div>
-                <div className="col-md-6 text-right">
-                  <Link href="/goal/quarter">
-                    <a className="link">Next Step</a>
-                  </Link>
-                </div>
-              </div>
+              <Buttons nextLink="/goal" hasBackButton={true}></Buttons>
             </div>
           </div>
         </Card>

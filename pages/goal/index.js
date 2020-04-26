@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
 import Left from '../../components/goal/left';
+import Buttons from '../../components/goal/buttons';
 import { theme } from '../../style/theme';
 
 const index = () => {
@@ -16,6 +17,7 @@ const index = () => {
               progress={1}
             ></Left>
             <div className="col-sm-12 col-md-8 right">
+              <h3 className="m-4">Please, write down your one year Goal</h3>
               <textarea
                 name="one-year-goal"
                 id="one-year"
@@ -23,11 +25,7 @@ const index = () => {
                 rows="10"
                 placeholder="Enter your 1-year goal"
               ></textarea>
-              <div>
-                <Link href="/goal/quarter" className="link">
-                  <a>Next Step</a>
-                </Link>
-              </div>
+              <Buttons nextLink="/goal/quarter" hasBackButton={false}></Buttons>
             </div>
           </div>
         </Card>
@@ -59,6 +57,7 @@ const index = () => {
           a {
             color: white;
             font-size: 1.5rem;
+            margin-bottom: 5rem;
           }
 
           a:after {
