@@ -1,38 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Buttons from '../../components/goal/buttons';
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
 import Left from '../../components/goal/left';
 import { theme } from '../../style/theme';
 import KeyResult from '../../components/goal/keyResult';
+import GoalContext from '../../components/goal/goalContext';
 
 const month = () => {
-  const [firstKeyResults, setFirstKeyResults] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [secondKeyResults, setSecondKeyResults] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [thirdKeyResults, setThirdKeyResults] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [fourthKeyResults, setFourthKeyResults] = useState([
-    {
-      text: '',
-    },
-  ]);
-
-  const keyResults = [
-    'Commodo culpa esse fugiat dolor sint proident laborum sint anim voluptate excepteur ut dolore elit.',
-    'Veniam laborum deserunt nulla excepteur irure dolore cillum deserunt esse aliqua amet ea.',
-    'Eu laboris eu qui et nostrud duis reprehenderit occaecat elit ad est anim.',
-  ];
+  const {
+    firstQuarterKeyResult,
+    firstMonthKeyResults,
+    setFirstMonthKeyResults,
+    secondMonthKeyResults,
+    setSecondMonthKeyResults,
+    thirdMonthKeyResults,
+    setThirdMonthKeyResults,
+    fourthMonthKeyResults,
+    setFourthMonthKeyResults,
+  } = useContext(GoalContext);
 
   return (
     <>
@@ -45,54 +31,55 @@ const month = () => {
               progress={4}
             ></Left>
             <div className="col-sm-12 col-md-8">
-              <div className="row p-4 section">
+              <div className="row p-4">
                 <h3>
                   How do you achieve the following Key Results of the first
                   quarter?
                 </h3>
-                {keyResults.map((result, index) => {
-                  return (
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h5>
-                          <span>{index + 1}. Key Result: </span>
-                        </h5>
-                      </div>
-                      <div className="col-md-9">
-                        <h5>{result}</h5>
-                      </div>
-                    </div>
-                  );
-                })}
               </div>
+              {firstQuarterKeyResult.map((result, index) => {
+                return (
+                  <div className="row">
+                    <div className="col-md-4">
+                      <h5>
+                        <span>{index + 1}. Key Result: </span>
+                      </h5>
+                    </div>
+                    <div className="col-md-9">
+                      <h5>{result.text}</h5>
+                    </div>
+                  </div>
+                );
+              })}
+
               <div className="row my-3">
                 <KeyResult
-                  keyResults={firstKeyResults}
-                  setKeyResults={setFirstKeyResults}
+                  keyResults={firstMonthKeyResults}
+                  setKeyResults={setFirstMonthKeyResults}
                   number={1}
-                  heading="Key results for the 1. month"
+                  heading="Key results for the 1. week"
                   placeholder="What do I need to acompolish in the 1st month to achieve my goal?"
                 />
                 <hr />
                 <KeyResult
-                  keyResults={secondKeyResults}
-                  setKeyResults={setSecondKeyResults}
+                  keyResults={secondMonthKeyResults}
+                  setKeyResults={setSecondMonthKeyResults}
                   number={2}
-                  heading="Key results for the 2. month"
+                  heading="Key results for the 2. week"
                   placeholder="What do I need to acompolish in the 2st month to achieve my goal?"
                 />
                 <KeyResult
-                  keyResults={thirdKeyResults}
-                  setKeyResults={setThirdKeyResults}
+                  keyResults={thirdMonthKeyResults}
+                  setKeyResults={setThirdMonthKeyResults}
                   number={3}
-                  heading="Key results for the 3. month"
+                  heading="Key results for the 3. week"
                   placeholder="What do I need to acompolish in the 3st month to achieve my goal?"
                 />
                 <KeyResult
-                  keyResults={fourthKeyResults}
-                  setKeyResults={setFourthKeyResults}
+                  keyResults={fourthMonthKeyResults}
+                  setKeyResults={setFourthMonthKeyResults}
                   number={4}
-                  heading="Key results for the 4. month"
+                  heading="Key results for the 4. week"
                   placeholder="What do I need to acompolish in the 4st month to achieve my goal?"
                 />
               </div>

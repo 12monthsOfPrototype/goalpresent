@@ -1,53 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Buttons from '../../components/goal/buttons';
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
 import Left from '../../components/goal/left';
 import { theme } from '../../style/theme';
 import KeyResult from '../../components/goal/keyResult';
+import GoalContext from '../../components/goal/goalContext';
 
 const week = () => {
-  const [monday, setMonday] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [tuesday, setTuesday] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [wednesday, setWednesday] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [thursday, setThursday] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [friday, setFriday] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [saturday, setSaturday] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [sunday, setSunday] = useState([
-    {
-      text: '',
-    },
-  ]);
+  const {
+    firstMonthKeyResults,
+    monday,
+    setMonday,
+    tuesday,
+    setTuesday,
+    wednesday,
+    setWednesday,
+    thursday,
+    setThursday,
+    friday,
+    setFriday,
+    saturday,
+    setSaturday,
+    sunday,
+    setSunday,
+  } = useContext(GoalContext);
 
-  const keyResults = [
-    'Commodo culpa esse fugiat dolor sint proident laborum sint anim voluptate excepteur ut dolore elit.',
-    'Veniam laborum deserunt nulla excepteur irure dolore cillum deserunt esse aliqua amet ea.',
-    'Eu laboris eu qui et nostrud duis reprehenderit occaecat elit ad est anim.',
-  ];
   return (
     <>
       <Layout>
@@ -59,26 +37,27 @@ const week = () => {
               progress={5}
             ></Left>
             <div className="col-sm-12 col-md-8">
-              <div className="row p-4 section">
+              <div className="row p-4">
                 <h3>
                   How do you achieve the following Key Results of the first
                   week?
                 </h3>
-                {keyResults.map((result, index) => {
-                  return (
-                    <div className="row">
-                      <div className="col-md-4">
-                        <h5>
-                          <span>{index + 1}. Key Result: </span>
-                        </h5>
-                      </div>
-                      <div className="col-md-9">
-                        <h5>{result}</h5>
-                      </div>
-                    </div>
-                  );
-                })}
               </div>
+              {firstMonthKeyResults.map((result, index) => {
+                return (
+                  <div className="row">
+                    <div className="col-md-4">
+                      <h5>
+                        <span>{index + 1}. Key Result: </span>
+                      </h5>
+                    </div>
+                    <div className="col-md-9">
+                      <h5>{result.text}</h5>
+                    </div>
+                  </div>
+                );
+              })}
+
               <div className="row my-3">
                 <KeyResult
                   keyResults={monday}

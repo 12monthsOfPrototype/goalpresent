@@ -1,11 +1,14 @@
-import Link from 'next/link';
+import { useContext } from 'react';
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
 import Left from '../../components/goal/left';
 import Buttons from '../../components/goal/buttons';
+import GoalContext from '../../components/goal/goalContext';
 import { theme } from '../../style/theme';
 
 const index = () => {
+  const { setGoal, goal } = useContext(GoalContext);
+
   return (
     <>
       <Layout>
@@ -24,7 +27,12 @@ const index = () => {
                 cols="30"
                 rows="10"
                 placeholder="Enter your 1-year goal"
-              ></textarea>
+                onChange={(e) => {
+                  setGoal(e.target.value);
+                }}
+              >
+                {goal}
+              </textarea>
               <Buttons nextLink="/goal/quarter" hasBackButton={false}></Buttons>
             </div>
           </div>
