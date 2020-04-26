@@ -17,6 +17,7 @@ const card = ({ children }) => {
             flex-direction: column;
             justify-content: center;
             max-width: 85vw;
+            margin-bottom: 5rem;
           }
 
           .card-custom {

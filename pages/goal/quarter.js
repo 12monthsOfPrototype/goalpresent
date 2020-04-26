@@ -1,32 +1,24 @@
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useContext } from 'react';
 import Layout from '../../components/Layout';
+import Buttons from '../../components/goal/buttons';
 import Card from '../../components/goal/card';
 import Left from '../../components/goal/left';
 import { theme } from '../../style/theme';
 import KeyResult from '../../components/goal/keyResult';
+import GoalContext from '../../components/goal/goalContext';
 
 const quarter = () => {
-  const [firstKeyResults, setFirstKeyResults] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [secondKeyResults, setSecondKeyResults] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [thirdKeyResults, setThirdKeyResults] = useState([
-    {
-      text: '',
-    },
-  ]);
-  const [fourthKeyResults, setFourthKeyResults] = useState([
-    {
-      text: '',
-    },
-  ]);
+  const {
+    goal,
+    firstKeyResults,
+    setFirstKeyResults,
+    secondKeyResults,
+    setSecondKeyResults,
+    thirdKeyResults,
+    setThirdKeyResults,
+    fourthKeyResults,
+    setFourthKeyResults,
+  } = useContext(GoalContext);
 
   return (
     <>
@@ -39,20 +31,22 @@ const quarter = () => {
               progress={2}
             ></Left>
             <div className="col-sm-12 col-md-8">
-              <div className="row p-4 section">
-                <h3>
-                  How do you achieve your Key Result in the first quarter?
-                </h3>
-                <div className="p-1 mt-3">
-                  <h4>Goal</h4>
-                  <p>
-                    Consectetur cupidatat consectetur reprehenderit consectetur
-                    incididunt laboris amet sunt cupidatat deserunt culpa. Ea
-                    irure consectetur ut minim nostrud dolore proident enim
-                    ipsum.
-                  </p>
+              <div className="row py-4">
+                <div className="col">
+                  <h3>
+                    How do you achieve your Key Result in the first quarter?
+                  </h3>
                 </div>
               </div>
+              <div className="row section">
+                <div className="col">
+                  <div className="p-1 mt-3">
+                    <h4>Goal</h4>
+                    <p>{goal}</p>
+                  </div>
+                </div>
+              </div>
+
               <div className="row my-3">
                 <KeyResult
                   keyResults={firstKeyResults}
@@ -84,18 +78,10 @@ const quarter = () => {
                   placeholder="What do I need to acompolish in the 4st month to achieve my goal?"
                 />
               </div>
-              <div className="row mt-5 px-4">
-                <div className="col-md-6">
-                  <Link href="/goal">
-                    <a className="link-back">Back</a>
-                  </Link>
-                </div>
-                <div className="col-md-6 text-right">
-                  <Link href="/goal/quarter">
-                    <a className="link">Next Step</a>
-                  </Link>
-                </div>
-              </div>
+              <Buttons
+                nextLink="/goal/first-quarter"
+                hasBackButton={true}
+              ></Buttons>
             </div>
           </div>
         </Card>
@@ -143,7 +129,6 @@ const quarter = () => {
 
           .section {
             border-bottom: 1px solid white;
-            width: 100%;
           }
         `}
       </style>
