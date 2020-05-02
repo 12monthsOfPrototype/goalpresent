@@ -93,6 +93,25 @@ const success = () => {
           stepThreeTitle="Plan your next week"
           stepThreeDescription="After you have finished your the tasks you have set for yourself, it's time to start planning the next week."
         />
+
+        <div className="container my-5 mx-5">
+          <div className="row">
+            <div className="col">
+              <h3>
+              Give us Feedback
+              </h3>  
+                <p>We would love to get your feedback and would like to understand how we can improve this tool!
+                </p>
+                <div className="col">
+                  <button>
+                    Start Questionary
+                  </button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        
       </Card>
     </Layout>
   );
