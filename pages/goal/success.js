@@ -35,22 +35,51 @@ const success = () => {
         <div className="container my-5 mx-5">
           <div className="row">
             <div className="col">
-              <p>
-                Now you just need to export your task to your favorite task
-                management tool!
-              </p>
+              <h3>
+                Now you can export your tasks for the upcoming week to <img src="/todoist.png" alt="" />
+              </h3>  
+                <p>todoist is a great task managments tool and you can download it <a href="https://todoist.com/de"><u>here!</u> </a> <br/>
+                 To export you tasks we offer you to options! Choose the one that you like the most!
+                </p>
             </div>
           </div>
+         
+          
+          
+          <a class="card-option" href="">
+            <div class="card-option">
+              <h2> Export with CSV</h2>
+              <br/>
+              <p>Download your tasks in a CSV and import them in todoist. you can find a step by step guide <a href=""><u>here</u> </a></p>
+              <div className="col">
+                <button>
+                 Export with CSV 
+                </button>
+              </div>
 
-          <div className="row">
-            <div className="col">
-              <button>
-                Export to <img src="/todoist.png" alt="" />
-              </button>
             </div>
+          </a>
+          <a class="card-option" href="">
+            <div class="card-option">
+              <h2> Export with CSV</h2>
+              <br/>
+              <p>Download your tasks in a CSV and import them in todoist. you can find a step by step guide <a href=""><u>here</u> </a></p>
+              <div className="col">
+                <button>
+                 Export with API Key
+                </button>
+              </div>
+
+            </div>
+          </a>
+          <div className="row">
+            
           </div>
         </div>
         <div className="container my-5"></div>
+
+       
+
         <Numbers
           title="How it works?"
           stepOneTitle="Set your goals and break them down"
