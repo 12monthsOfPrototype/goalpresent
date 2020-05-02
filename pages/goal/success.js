@@ -79,15 +79,19 @@ const success = () => {
         <div className="container my-5"></div>
 
        
-
+        <cardoption 
+          cardtitle="Hello"
+          cardtext="hello"
+          buttontext="export"
+        />
         <Numbers
-          title="How it works?"
-          stepOneTitle="Set your goals and break them down"
-          stepOneDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
-          stepTwoTitle="Set your goals and break them down"
-          stepTwoDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
-          stepThreeTitle="Set your goals and break them down"
-          stepThreeDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
+          title="Next Steps"
+          stepOneTitle="Export your tasks"
+          stepOneDescription="You can either export your tasks for the upcoming with a CSV or with an API Key"
+          stepTwoTitle="Execute the tasks"
+          stepTwoDescription="Once you have exported your tasks to todoist, complete the tasks you have set for yourself "
+          stepThreeTitle="Plan your next week"
+          stepThreeDescription="After you have finished your the tasks you have set for yourself, it's time to start planning the next week."
         />
       </Card>
     </Layout>
