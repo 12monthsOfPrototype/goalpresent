@@ -8,7 +8,6 @@ export default (req, res) => {
   const { method, apiToken, tasks } = req.body;
   if (method === 'token') {
     if (!apiToken) {
-      res.status = 400;
       return 'Please add an api token';
     }
 
@@ -16,7 +15,6 @@ export default (req, res) => {
       await addTask(task, apiToken);
     });
 
-    res.status = 200;
     res.end('Success');
   } else {
     const csvWriter = createCsvWriter({
@@ -40,7 +38,6 @@ export default (req, res) => {
     });
 
     csvWriter.writeRecords(data).then(() => {
-      res.status = 200;
       res.end('Success');
     });
 
