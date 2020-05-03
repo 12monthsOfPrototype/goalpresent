@@ -5,8 +5,8 @@ import Router from 'next/router';
 const buttons = ({ nextLink, hasBackButton }) => {
   return (
     <>
-      <div className="row m-5 px-4 w-75">
-        <div className="col-md-6">
+      <div className="row m-5 px-4 w-75 d-flex align-items-center justify-content-center">
+        <div className="col-md-6 w-50">
           {hasBackButton && (
             <a
               className="link-back"
@@ -14,14 +14,16 @@ const buttons = ({ nextLink, hasBackButton }) => {
                 Router.back();
               }}
             >
-              Step Back
+              <span className="d-none d-lg-inline-block">Step Back</span>
             </a>
           )}
         </div>
 
-        <div className="col-md-6 text-right">
+        <div className="col-md-6 text-right w-50">
           <Link href={nextLink}>
-            <a className="link">Next Step</a>
+            <a className="link">
+              <span className="d-none d-lg-inline-block">Next Step</span>
+            </a>
           </Link>
         </div>
       </div>
