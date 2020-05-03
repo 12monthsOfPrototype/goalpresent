@@ -33,7 +33,7 @@ const month = () => {
             ></Left>
             <div className="col-sm-12 col-md-8">
               <GoalsTop>
-                <div className="row my-3">
+                <div className="row my-3" id="dates">
                   <KeyResult
                     keyResults={firstMonthKeyResults}
                     setKeyResults={setFirstMonthKeyResults}
@@ -63,7 +63,10 @@ const month = () => {
                     placeholder="What do I need to acompolish in the 4st month to achieve my goal?"
                   />
                 </div>
-                <Buttons nextLink="/goal/week" hasBackButton={true}></Buttons>
+                <Buttons
+                  nextLink="/goal/week#dates"
+                  hasBackButton={true}
+                ></Buttons>
               </GoalsTop>
             </div>
           </div>

@@ -38,7 +38,7 @@ const week = () => {
             ></Left>
             <div className="col-sm-12 col-md-8">
               <GoalsTop>
-                <div className="row my-3">
+                <div className="row my-3" id="dates">
                   <KeyResult
                     keyResults={monday}
                     setKeyResults={setMonday}

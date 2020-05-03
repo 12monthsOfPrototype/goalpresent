@@ -32,7 +32,7 @@ const quarter = () => {
             ></Left>
             <div className="col-sm-12 col-md-8">
               <GoalsTop>
-                <div className="row">
+                <div className="row" id="dates">
                   <KeyResult
                     keyResults={firstKeyResults}
                     setKeyResults={setFirstKeyResults}
@@ -60,7 +60,7 @@ const quarter = () => {
                   />
                 </div>
                 <Buttons
-                  nextLink="/goal/first-quarter"
+                  nextLink="/goal/first-quarter#dates"
                   hasBackButton={true}
                 ></Buttons>
               </GoalsTop>

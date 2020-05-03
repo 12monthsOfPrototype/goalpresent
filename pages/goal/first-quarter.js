@@ -32,7 +32,7 @@ const firstQuarter = () => {
             ></Left>
             <div className="col-sm-12 col-md-8">
               <GoalsTop>
-                <div className="row my-3 section-top">
+                <div className="row my-3" id="dates">
                   <KeyResult
                     keyResults={firstQuarterKeyResult}
                     setKeyResults={setfirstQuarterKeyResult}
@@ -56,7 +56,10 @@ const firstQuarter = () => {
                     placeholder="What do I need to acompolish in the 3st month to achieve my goal?"
                   />
                 </div>
-                <Buttons nextLink="/goal/month" hasBackButton={true}></Buttons>
+                <Buttons
+                  nextLink="/goal/month#dates"
+                  hasBackButton={true}
+                ></Buttons>
               </GoalsTop>
             </div>
           </div>
