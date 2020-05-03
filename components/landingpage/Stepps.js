@@ -37,7 +37,7 @@ const Stepps = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          height: 45vh;
+          height: 70vh;
         }
         .row {
           background-color: ${theme.color.background.secondary};
