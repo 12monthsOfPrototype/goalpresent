@@ -10,7 +10,15 @@ const landing = () => {
       <Layout>
         <Hero />
         <Stepps />
-        <Numbers />
+        <Numbers
+          title="How it works?"
+          stepOneTitle="Set your goals and break them down"
+          stepOneDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
+          stepTwoTitle="Set your goals and break them down"
+          stepTwoDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
+          stepThreeTitle="Set your goals and break them down"
+          stepThreeDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
+        />
       </Layout>
     </>
   );
