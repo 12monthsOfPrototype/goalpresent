@@ -8,9 +8,7 @@ const cardoption = ({ cardtitle, cardtext, buttontext, handleClick }) => {
           <div className="card-body">
             <h4 className="cardtitle">{cardtitle}</h4>
             <p className="cardtext">{cardtext}</p>
-            <a class="btn btn-danger" onClick={handleClick}>
-              {buttontext} <img src="/todoist.png" alt="" />
-            </a>
+            <button onClick={handleClick}>{buttontext} todoist</button>
           </div>
         </div>
       </div>
@@ -29,11 +27,8 @@ const cardoption = ({ cardtitle, cardtext, buttontext, handleClick }) => {
                 
             }
             .cardtitle {
-                color: #B83834;
+                color: ${theme.color.primary};
             }
-            
-          
-      
             }
         
         `}
