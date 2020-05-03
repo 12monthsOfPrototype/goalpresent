@@ -46,33 +46,9 @@ const success = () => {
           </div>
          
           
-          
-          <a className="card-option" href="">
-            <div className="card-option">
-              <h2> Export with CSV</h2>
-              <br/>
-              <p>Download your tasks in a CSV and import them in todoist. you can find a step by step guide <a href=""><u>here</u> </a></p>
-              <div className="col">
-                <button>
-                 Export with CSV 
-                </button>
-              </div>
 
-            </div>
-          </a>
-          <a class="card-option" href="">
-            <div class="card-option">
-              <h2> Export with CSV</h2>
-              <br/>
-              <p>Download your tasks in a CSV and import them in todoist. you can find a step by step guide <a href=""><u>here</u> </a></p>
-              <div className="col">
-                <button>
-                 Export with API Key
-                </button>
-              </div>
+        
 
-            </div>
-          </a>
           <div className="row">
             
           </div>
