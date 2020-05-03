@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
-import Numbers from '../../components/landingpage/numbers';
+import Numbers from '../../components/landingpage/Numbers';
 import Cardoption from '../../components/goal/cardOption';
 import GoalContext from '../../components/goal/goalContext';
 import axios from 'axios';
