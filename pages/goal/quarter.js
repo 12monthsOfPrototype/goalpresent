@@ -6,10 +6,10 @@ import Left from '../../components/goal/left';
 import { theme } from '../../style/theme';
 import KeyResult from '../../components/goal/keyResult';
 import GoalContext from '../../components/goal/goalContext';
+import GoalsTop from '../../components/goal/goalsTop';
 
 const quarter = () => {
   const {
-    goal,
     firstKeyResults,
     setFirstKeyResults,
     secondKeyResults,
@@ -31,57 +31,39 @@ const quarter = () => {
               progress={2}
             ></Left>
             <div className="col-sm-12 col-md-8">
-              <div className="row py-4">
-                <div className="col">
-                  <h3>
-                    How do you achieve your Key Result in the first quarter?
-                  </h3>
-                </div>
-              </div>
-              <div className="row section">
-                <div className="col">
-                  <div className="p-1 mt-3">
-                    <h4>Goal</h4>
-                    <p>{goal}</p>
-                  </div>
-                </div>
-              </div>
+              <GoalsTop>
+                <div className="row">
+                  <KeyResult
+                    keyResults={firstKeyResults}
+                    setKeyResults={setFirstKeyResults}
+                    number={1}
+                    time="Quarter"
+                  />
 
-              <div className="row my-3">
-                <KeyResult
-                  keyResults={firstKeyResults}
-                  setKeyResults={setFirstKeyResults}
-                  number={1}
-                  heading="Key results for the 1. Quarter"
-                  placeholder="What do I need to acompolish in the 1st month to achieve my goal?"
-                />
-                <hr />
-                <KeyResult
-                  keyResults={secondKeyResults}
-                  setKeyResults={setSecondKeyResults}
-                  number={2}
-                  heading="Key results for the 2. Quarter"
-                  placeholder="What do I need to acompolish in the 2st month to achieve my goal?"
-                />
-                <KeyResult
-                  keyResults={thirdKeyResults}
-                  setKeyResults={setThirdKeyResults}
-                  number={3}
-                  heading="Key results for the 3. Quarter"
-                  placeholder="What do I need to acompolish in the 3st month to achieve my goal?"
-                />
-                <KeyResult
-                  keyResults={fourthKeyResults}
-                  setKeyResults={setFourthKeyResults}
-                  number={4}
-                  heading="Key results for the 4. Quarter"
-                  placeholder="What do I need to acompolish in the 4st month to achieve my goal?"
-                />
-              </div>
-              <Buttons
-                nextLink="/goal/first-quarter"
-                hasBackButton={true}
-              ></Buttons>
+                  <KeyResult
+                    keyResults={secondKeyResults}
+                    setKeyResults={setSecondKeyResults}
+                    number={2}
+                    time="Quarter"
+                  />
+                  <KeyResult
+                    keyResults={thirdKeyResults}
+                    setKeyResults={setThirdKeyResults}
+                    number={3}
+                    time="Quarter"
+                  />
+                  <KeyResult
+                    keyResults={fourthKeyResults}
+                    setKeyResults={setFourthKeyResults}
+                    number={4}
+                    time="Quarter"
+                  />
+                </div>
+                <Buttons
+                  nextLink="/goal/first-quarter"
+                  hasBackButton={true}
+                ></Buttons>
+              </GoalsTop>
             </div>
           </div>
         </Card>
@@ -125,10 +107,6 @@ const quarter = () => {
 
           a:hover {
             text-decoration: none;
-          }
-
-          .section {
-            border-bottom: 1px solid white;
           }
         `}
       </style>
