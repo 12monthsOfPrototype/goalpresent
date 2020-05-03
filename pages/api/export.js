@@ -18,7 +18,7 @@ export default (req, res) => {
     res.end('Success');
   } else {
     const csvWriter = createCsvWriter({
-      path: 'tmp/todos.csv',
+      path: 'todos.csv',
       header: [
         { id: 'type', title: 'TYPE' },
         { id: 'content', title: 'CONTENT' },
