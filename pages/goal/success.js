@@ -5,6 +5,20 @@ import Numbers from '../../components/landingpage/numbers';
 import Cardoption from '../../components/goal/cardOption';
 import GoalContext from '../../components/goal/goalContext';
 import axios from 'axios';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#383C42',
+  },
+};
 
 const success = () => {
   const {
@@ -21,6 +35,8 @@ const success = () => {
     error: false,
     text: '',
   });
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [apiKey, setApiKey] = useState('');
 
   const downloadURI = (uri, name) => {
     let link = document.createElement('a');
@@ -31,8 +47,7 @@ const success = () => {
     document.body.removeChild(link);
   };
 
-  const handleExportCSV = async () => {
-    const url = document.location.origin + '/api';
+  const generateTaskArray = () => {
     const tasks = [];
     monday.forEach((task) => {
       if (task.text !== '') {
@@ -83,6 +98,12 @@ const success = () => {
         });
       }
     });
+    return tasks;
+  };
+
+  const handleExportCSV = async () => {
+    const url = document.location.origin + '/api';
+    const tasks = generateTaskArray();
     try {
       const data = await axios.post(url + '/export', {
         method: 'csv',
@@ -103,6 +124,31 @@ const success = () => {
     } finally {
       downloadURI('/tmp/todos.csv', 'your-daily-goals.csv');
       axios.post(url + '/deleteCSV');
+    }
+  };
+
+  const handleExportWithKey = async () => {
+    const url = document.location.origin + '/api';
+    const tasks = generateTaskArray();
+    try {
+      const data = await axios.post(url + '/export', {
+        method: 'token',
+        apiToken: apiKey,
+        tasks,
+      });
+      if (data.status !== 200) {
+        setError({
+          error: true,
+          text:
+            'There was an error generating your csv. Please try again later',
+        });
+      }
+    } catch (error) {
+      setError({
+        error: true,
+        text: 'There was an error generating your csv. Please try again later',
+      });
+    } finally {
     }
   };
   return (
@@ -174,6 +220,9 @@ const success = () => {
               cardtitle="Export with API Key"
               cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
               buttontext="Export to "
+              handleClick={() => {
+                setIsOpen(true);
+              }}
             />
           </div>
         </div>
@@ -206,6 +255,28 @@ const success = () => {
           </div>
         </div>
       </Card>
+
+      <Modal
+        isOpen={modalIsOpen}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <div className="container">
+          <div className="row">
+            <h4>Please add your api key here:</h4>
+            <input
+              type="text"
+              name="apiKey"
+              id="apiKey"
+              onChange={(e) => {
+                setApiKey(e.target.value);
+              }}
+              defaultValue={apiKey}
+            />
+            <button onClick={handleExportWithKey}>Export</button>
+          </div>
+        </div>
+      </Modal>
       <style jsx>{`
         .danger {
           background-color: red;
