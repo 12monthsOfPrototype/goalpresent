@@ -1,9 +1,159 @@
+import { useContext, useState } from 'react';
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
 import Numbers from '../../components/landingpage/numbers';
-import Cardoption from '../../components/goal/cardOption'
+import Cardoption from '../../components/goal/cardOption';
+import GoalContext from '../../components/goal/goalContext';
+import axios from 'axios';
+import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
+
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    backgroundColor: '#383C42',
+    borderRadius: '33px',
+  },
+};
 
 const success = () => {
+  const {
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    sunday,
+  } = useContext(GoalContext);
+
+  const [error, setError] = useState({
+    error: false,
+    text: '',
+  });
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [apiKey, setApiKey] = useState('');
+
+  const downloadURI = (uri, name) => {
+    let link = document.createElement('a');
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const generateTaskArray = () => {
+    const tasks = [];
+    monday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    tuesday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    wednesday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    thursday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    friday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    saturday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    sunday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    return tasks;
+  };
+
+  const handleExportCSV = async () => {
+    const url = document.location.origin + '/api';
+    const tasks = generateTaskArray();
+    try {
+      const data = await axios.post(url + '/export', {
+        method: 'csv',
+        tasks,
+      });
+      if (data.status !== 200) {
+        setError({
+          error: true,
+          text:
+            'There was an error generating your csv. Please try again later',
+        });
+      }
+    } catch (error) {
+      setError({
+        error: true,
+        text: 'There was an error generating your csv. Please try again later',
+      });
+    } finally {
+      downloadURI('/tmp/todos.csv', 'your-daily-goals.csv');
+      axios.post(url + '/deleteCSV');
+    }
+  };
+
+  const handleExportWithKey = async () => {
+    const url = document.location.origin + '/api';
+    const tasks = generateTaskArray();
+    try {
+      const data = await axios.post(url + '/export', {
+        method: 'token',
+        apiToken: apiKey,
+        tasks,
+      });
+      if (data.status !== 200) {
+        setError({
+          error: true,
+          text: 'There was an error exporting. Please try again later',
+        });
+        setIsOpen(false);
+      }
+    } catch (error) {
+      setError({
+        error: true,
+        text: 'There was an error exporting your csv. Please try again later',
+      });
+      setIsOpen(false);
+    } finally {
+      setIsOpen(false);
+    }
+  };
   return (
     <Layout>
       <Card>
@@ -37,35 +187,48 @@ const success = () => {
           <div className="row">
             <div className="col">
               <h3>
-                Now you can export your tasks for the upcoming week to <img src="/todoist.png" alt="" />
-              </h3>  
-                <p>todoist is a great task managments tool and you can download it <a href="https://todoist.com/de"><u>here!</u> </a> <br/>
-                 To export you tasks we offer you to options! Choose the one that you like the most!
-                </p>
+                Now you can export your tasks for the upcoming week to{' '}
+                <img src="/todoist.png" alt="" />
+              </h3>
+              <p>
+                todoist is a great task managments tool and you can download it{' '}
+                <a href="https://todoist.com/de">
+                  <u>here!</u>{' '}
+                </a>{' '}
+                <br />
+                To export you tasks we offer you two options! Choose the one
+                that you like the most!
+              </p>
             </div>
           </div>
-         
-          
-
-        
-
-          <div className="row">
-            
+        </div>
+        {error.error && (
+          <div className="row fade-in">
+            <div className="col mx-5 danger">
+              <p>{error.text}</p>
+            </div>
+          </div>
+        )}
+        <div className="row">
+          <div className="col-md-6">
+            <Cardoption
+              cardtitle="Export with CSV"
+              cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
+              buttontext="Export to "
+              handleClick={handleExportCSV}
+            />
+          </div>
+          <div className="col-md-6">
+            <Cardoption
+              cardtitle="Export with API Key"
+              cardtext="Enter your api key and let us do the magic to add them to your todoist app. We never save your key."
+              buttontext="Export to "
+              handleClick={() => {
+                setIsOpen(true);
+              }}
+            />
           </div>
         </div>
-        <div className="container my-5"></div>
-
-       
-        <Cardoption 
-          cardtitle="Export with CSV"
-          cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
-          buttontext="Export to "
-        />
-         <Cardoption 
-          cardtitle="Export with API Key"
-          cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
-          buttontext="Export to "
-        />
         <Numbers
           title="Next Steps"
           stepOneTitle="Export your tasks"
@@ -79,22 +242,59 @@ const success = () => {
         <div className="container my-5 mx-5">
           <div className="row">
             <div className="col">
-              <h3>
-              Give us Feedback
-              </h3>  
-                <p>We would love to get your feedback and would like to understand how we can improve this tool!
-                </p>
-                <div className="col">
-                  <button>
-                  <a href="https://luca142.typeform.com/to/VcniyZ">Start Questionary</a>
-                  </button>
-                </div>
+              <h3>Give us Feedback</h3>
+              <p>
+                We would love to get your feedback and would like to understand
+                how we can improve this tool!
+              </p>
+              <div className="col">
+                <button>
+                  <a href="https://luca142.typeform.com/to/VcniyZ">
+                    Start Questionary
+                  </a>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-
-        
       </Card>
+
+      <Modal
+        isOpen={modalIsOpen}
+        style={customStyles}
+        contentLabel="Example Modal"
+        onRequestClose={() => {
+          setIsOpen(false);
+        }}
+      >
+        <div className="container w-75">
+          <div className="m-auto">
+            <div className="row">
+              <h4>Please add your api key here:</h4>
+            </div>
+            <div className="row my-3">
+              <input
+                type="text"
+                name="apiKey"
+                id="apiKey"
+                onChange={(e) => {
+                  setApiKey(e.target.value);
+                }}
+                placeholder="Your api key goes here"
+                defaultValue={apiKey}
+              />
+            </div>
+            <div className="row my-3">
+              <button onClick={handleExportWithKey}>Export</button>
+            </div>
+          </div>
+        </div>
+      </Modal>
+      <style jsx>{`
+        .danger {
+          background-color: red;
+        }
+      `}</style>
     </Layout>
   );
 };

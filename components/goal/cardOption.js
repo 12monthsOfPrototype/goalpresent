@@ -1,26 +1,19 @@
 import { theme } from '../../style/theme';
 
-const cardoption = ({ 
-    cardtitle,
-    cardtext,
-    buttontext,
-}) => {
+const cardoption = ({ cardtitle, cardtext, buttontext, handleClick }) => {
   return (
     <>
-        <div className="cardoption">
-            <div className="card w-20">
-
-
-            
-            <div className="card-body">
-                <h4 className="cardtitle">{cardtitle}</h4>
-                <p className="cardtext">{cardtext}</p>
-                <a href="https://todoist.com/de" class="btn btn-danger">{buttontext} <img src="/todoist.png" alt="" /></a>
-            </div>
-            </div>
+      <div className="cardoption">
+        <div className="card w-20">
+          <div className="card-body">
+            <h4 className="cardtitle">{cardtitle}</h4>
+            <p className="cardtext">{cardtext}</p>
+            <button onClick={handleClick}>{buttontext} todoist</button>
+          </div>
         </div>
-    
-        <style jsx>
+      </div>
+
+      <style jsx>
         {`
             .card {
                 background-color: ${theme.color.background.tertiary};
@@ -34,15 +27,12 @@ const cardoption = ({
                 
             }
             .cardtitle {
-                color: #B83834;
+                color: ${theme.color.primary};
             }
-            
-          
-      
             }
         
         `}
-        </style>
+      </style>
     </>
   );
 };

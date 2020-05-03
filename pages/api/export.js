@@ -20,11 +20,12 @@ export default (req, res) => {
     res.end('Success');
   } else {
     const csvWriter = createCsvWriter({
-      path: 'tmp/todos.csv',
+      path: 'public/tmp/todos.csv',
       header: [
         { id: 'type', title: 'TYPE' },
         { id: 'content', title: 'CONTENT' },
         { id: 'priority', title: 'PRIORITY' },
+        { id: 'due_date', title: 'DATE' },
       ],
     });
 
@@ -34,6 +35,7 @@ export default (req, res) => {
         type: 'task',
         content: task.content,
         priority: 1,
+        due_date: task.due_date,
       });
     });
 

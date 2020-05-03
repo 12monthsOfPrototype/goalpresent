@@ -84,7 +84,10 @@ const week = () => {
                   />
                 </div>
 
-                <Buttons nextLink="/goal" hasBackButton={true}></Buttons>
+                <Buttons
+                  nextLink="/goal/success"
+                  hasBackButton={true}
+                ></Buttons>
               </GoalsTop>
             </div>
           </div>
