@@ -17,6 +17,7 @@ const customStyles = {
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
     backgroundColor: '#383C42',
+    borderRadius: '33px',
   },
 };
 
@@ -139,16 +140,18 @@ const success = () => {
       if (data.status !== 200) {
         setError({
           error: true,
-          text:
-            'There was an error generating your csv. Please try again later',
+          text: 'There was an error exporting. Please try again later',
         });
+        setIsOpen(false);
       }
     } catch (error) {
       setError({
         error: true,
-        text: 'There was an error generating your csv. Please try again later',
+        text: 'There was an error exporting your csv. Please try again later',
       });
+      setIsOpen(false);
     } finally {
+      setIsOpen(false);
     }
   };
   return (
@@ -218,7 +221,7 @@ const success = () => {
           <div className="col-md-6">
             <Cardoption
               cardtitle="Export with API Key"
-              cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
+              cardtext="Enter your api key and let us do the magic to add them to your todoist app. We never save your key."
               buttontext="Export to "
               handleClick={() => {
                 setIsOpen(true);
@@ -260,20 +263,30 @@ const success = () => {
         isOpen={modalIsOpen}
         style={customStyles}
         contentLabel="Example Modal"
+        onRequestClose={() => {
+          setIsOpen(false);
+        }}
       >
-        <div className="container">
-          <div className="row">
-            <h4>Please add your api key here:</h4>
-            <input
-              type="text"
-              name="apiKey"
-              id="apiKey"
-              onChange={(e) => {
-                setApiKey(e.target.value);
-              }}
-              defaultValue={apiKey}
-            />
-            <button onClick={handleExportWithKey}>Export</button>
+        <div className="container w-75">
+          <div className="m-auto">
+            <div className="row">
+              <h4>Please add your api key here:</h4>
+            </div>
+            <div className="row my-3">
+              <input
+                type="text"
+                name="apiKey"
+                id="apiKey"
+                onChange={(e) => {
+                  setApiKey(e.target.value);
+                }}
+                placeholder="Your api key goes here"
+                defaultValue={apiKey}
+              />
+            </div>
+            <div className="row my-3">
+              <button onClick={handleExportWithKey}>Export</button>
+            </div>
           </div>
         </div>
       </Modal>
