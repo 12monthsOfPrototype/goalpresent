@@ -86,7 +86,7 @@ const success = () => {
                 </p>
                 <div className="col">
                   <button>
-                  <a href="http://www.google.com/">Start Questionary</a>
+                  <a href="https://luca142.typeform.com/to/VcniyZ">Start Questionary</a>
                   </button>
                 </div>
             </div>
