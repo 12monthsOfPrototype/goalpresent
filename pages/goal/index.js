@@ -33,7 +33,10 @@ const index = () => {
               >
                 {goal}
               </textarea>
-              <Buttons nextLink="/goal/quarter" hasBackButton={false}></Buttons>
+              <Buttons
+                nextLink="/goal/quarter#dates"
+                hasBackButton={false}
+              ></Buttons>
             </div>
           </div>
         </Card>

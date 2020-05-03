@@ -42,6 +42,10 @@ const Layout = ({ children }) => {
             line-height: 66px;
           }
 
+          .color-primary {
+            color: ${theme.color.primary};
+          }
+
           .fade-in {
             animation: fadein 2s;
           }
@@ -57,6 +61,21 @@ const Layout = ({ children }) => {
             }
             to {
               opacity: 1;
+            }
+          }
+
+          .fadeInDown {
+            animation: fadeInDown 0.5s;
+          }
+
+          @keyframes fadeInDown {
+            0% {
+              opacity: 0;
+              transform: translateY(-5px);
+            }
+            100% {
+              opacity: 1;
+              transform: translateY(0);
             }
           }
         `}

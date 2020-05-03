@@ -3,9 +3,11 @@ import { theme } from '../../style/theme';
 const left = ({ heading, number, progress }) => {
   return (
     <>
-      <div className="col-sm-12 col-md-4 left">
-        <h1>{number}</h1>
-        <h2>{heading}</h2>
+      <div className="col-sm-12 col-md-4 left d-none d-md-block">
+        <div className="row">
+          <h1>{number}</h1>
+          <h2>{heading}</h2>
+        </div>
         <div className="my-5">
           <ul>
             <li className={number === '01' && 'active'}>01</li>
@@ -14,11 +16,31 @@ const left = ({ heading, number, progress }) => {
             <li className={number === '04' && 'active'}>04</li>
             <li className={number === '05' && 'active'}>05</li>
           </ul>
-          <div className="progress">
-            <div></div>
-          </div>
+        </div>
+        <div className="progress">
+          <div></div>
         </div>
       </div>
+      <div className="col-sm-12 col-md-4 left-sm d-md-none mx-3">
+        <div className="row">
+          <h3>
+            <span className="color-primary">{number}</span> {heading}
+          </h3>
+        </div>
+        <div className="my-3">
+          <ul>
+            <li className={number === '01' && 'active'}>01</li>
+            <li className={number === '02' && 'active'}>02</li>
+            <li className={number === '03' && 'active'}>03</li>
+            <li className={number === '04' && 'active'}>04</li>
+            <li className={number === '05' && 'active'}>05</li>
+          </ul>
+        </div>
+        <div className="progress">
+          <div></div>
+        </div>
+      </div>
+
       <style jsx>{`
         .left {
           background-color: ${theme.color.background.tertiary};
@@ -28,6 +50,12 @@ const left = ({ heading, number, progress }) => {
           flex-direction: column;
           justify-content: center;
           padding: 10rem 5rem;
+        }
+
+        .left-sm {
+          background-color: ${theme.color.background.tertiary};
+          padding: 3rem 3rem;
+          border-radius: ${theme.sizing.border.large};
         }
 
         h1 {

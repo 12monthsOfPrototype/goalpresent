@@ -6,10 +6,10 @@ import Left from '../../components/goal/left';
 import { theme } from '../../style/theme';
 import KeyResult from '../../components/goal/keyResult';
 import GoalContext from '../../components/goal/goalContext';
+import GoalsTop from '../../components/goal/goalsTop';
 
 const week = () => {
   const {
-    firstMonthKeyResults,
     monday,
     setMonday,
     tuesday,
@@ -37,81 +37,55 @@ const week = () => {
               progress={5}
             ></Left>
             <div className="col-sm-12 col-md-8">
-              <div className="row p-4">
-                <h3>
-                  How do you achieve the following Key Results of the first
-                  week?
-                </h3>
-              </div>
-              {firstMonthKeyResults.map((result, index) => {
-                return (
-                  <div className="row">
-                    <div className="col-md-4">
-                      <h5>
-                        <span>{index + 1}. Key Result: </span>
-                      </h5>
-                    </div>
-                    <div className="col-md-9">
-                      <h5>{result.text}</h5>
-                    </div>
-                  </div>
-                );
-              })}
+              <GoalsTop>
+                <div className="row my-3" id="dates">
+                  <KeyResult
+                    keyResults={monday}
+                    setKeyResults={setMonday}
+                    time="Monday"
+                    placeholder="What do I need to acomplish on Monday to achieve your key results for the week?"
+                  />
+                  <hr />
+                  <KeyResult
+                    keyResults={tuesday}
+                    setKeyResults={setTuesday}
+                    time="Tuesday"
+                    placeholder="What do I need to acomplish on Tuesday to achieve your key results for the week?"
+                  />
+                  <KeyResult
+                    keyResults={wednesday}
+                    setKeyResults={setWednesday}
+                    time="Wednesday"
+                    placeholder="What do I need to acomplish on Wednesday  to achieve your key results for the week?"
+                  />
+                  <KeyResult
+                    keyResults={thursday}
+                    setKeyResults={setThursday}
+                    time="Thursday"
+                    placeholder="What do I need to acomplish on Thursday  to achieve your key results for the week?"
+                  />
+                  <KeyResult
+                    keyResults={friday}
+                    setKeyResults={setFriday}
+                    time="Friday"
+                    placeholder="What do I need to acomplish on Friday  to achieve your key results for the week?"
+                  />
+                  <KeyResult
+                    keyResults={saturday}
+                    setKeyResults={setSaturday}
+                    time="Saturday"
+                    placeholder="What do I need to acomplish on Saturday  to achieve your key results for the week?"
+                  />
+                  <KeyResult
+                    keyResults={sunday}
+                    setKeyResults={setSunday}
+                    time="Sunday"
+                    placeholder="What do I need to acomplish on Sunday  to achieve your key results for the week?"
+                  />
+                </div>
 
-              <div className="row my-3">
-                <KeyResult
-                  keyResults={monday}
-                  setKeyResults={setMonday}
-                  number={1}
-                  heading="Task for Monday"
-                  placeholder="What do I need to acomplish on Monday to achieve your key results for the week?"
-                />
-                <hr />
-                <KeyResult
-                  keyResults={tuesday}
-                  setKeyResults={setTuesday}
-                  number={2}
-                  heading="Task for Tuesday"
-                  placeholder="What do I need to acomplish on Tuesday to achieve your key results for the week?"
-                />
-                <KeyResult
-                  keyResults={wednesday}
-                  setKeyResults={setWednesday}
-                  number={3}
-                  heading="Task for Wednesday"
-                  placeholder="What do I need to acomplish on Wednesday  to achieve your key results for the week?"
-                />
-                <KeyResult
-                  keyResults={thursday}
-                  setKeyResults={setThursday}
-                  number={1}
-                  heading="Task for Thursday"
-                  placeholder="What do I need to acomplish on Thursday  to achieve your key results for the week?"
-                />
-                <hr />
-                <KeyResult
-                  keyResults={friday}
-                  setKeyResults={setFriday}
-                  number={2}
-                  heading="Task for Friday"
-                  placeholder="What do I need to acomplish on Friday  to achieve your key results for the week?"
-                />
-                <KeyResult
-                  keyResults={saturday}
-                  setKeyResults={setSaturday}
-                  number={3}
-                  heading="Task for Saturday"
-                  placeholder="What do I need to acomplish on Saturday  to achieve your key results for the week?"
-                />
-                <KeyResult
-                  keyResults={sunday}
-                  setKeyResults={setSunday}
-                  number={3}
-                  heading="Task for Sunday"
-                  placeholder="What do I need to acomplish on Sunday  to achieve your key results for the week?"
-                />
-              </div>
-              <Buttons nextLink="/goal" hasBackButton={true}></Buttons>
+                <Buttons nextLink="/goal" hasBackButton={true}></Buttons>
+              </GoalsTop>
             </div>
           </div>
         </Card>
