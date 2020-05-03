@@ -1,6 +1,7 @@
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
 import Numbers from '../../components/landingpage/numbers';
+import Cardoption from '../../components/goal/cardOption'
 
 const success = () => {
   return (
@@ -46,8 +47,8 @@ const success = () => {
          
           
           
-          <a class="card-option" href="">
-            <div class="card-option">
+          <a className="card-option" href="">
+            <div className="card-option">
               <h2> Export with CSV</h2>
               <br/>
               <p>Download your tasks in a CSV and import them in todoist. you can find a step by step guide <a href=""><u>here</u> </a></p>
@@ -79,10 +80,15 @@ const success = () => {
         <div className="container my-5"></div>
 
        
-        <cardoption 
-          cardtitle="Hello"
-          cardtext="hello"
-          buttontext="export"
+        <Cardoption 
+          cardtitle="Export with CSV"
+          cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
+          buttontext="Export to "
+        />
+         <Cardoption 
+          cardtitle="Export with API Key"
+          cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
+          buttontext="Export to "
         />
         <Numbers
           title="Next Steps"
@@ -104,7 +110,7 @@ const success = () => {
                 </p>
                 <div className="col">
                   <button>
-                    Start Questionary
+                  <a href="http://www.google.com/">Start Questionary</a>
                   </button>
                 </div>
             </div>
