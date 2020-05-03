@@ -27,36 +27,42 @@ const keyResult = ({ keyResults, setKeyResults, number, time }) => {
         </div>
       </div>
 
-      <div className=" offset-2 col-md-10 fadeInDown">
+      <div className=" offset-2 col-sm-12 col-md-10 fadeInDown">
         {keyResults.map((result, index) => {
           return (
             <div className="my-3 fadeInDown" key={index}>
-              <input
-                type="text"
-                name="key-result"
-                placeholder={`What do I need to acomplish ${
-                  number ? `in the ${number}st ${time}` : `on ${time}`
-                } to achieve my 1 year goal?`}
-                defaultValue={result.text}
-                onChange={(e) => {
-                  const stateCopy = keyResults;
-                  stateCopy[index].text = e.target.value;
-                  setKeyResults(stateCopy);
-                }}
-              />
-              <RiDeleteBin6Line
-                color={theme.color.primary}
-                className={keyResults.length === 1 ? 'd-none' : 'mx-3'}
-                onClick={() => {
-                  if (keyResults.length > 1) {
-                    const newKeyResults = [...keyResults];
-                    if (index !== -1) {
-                      newKeyResults.splice(index, 1);
-                      setKeyResults(newKeyResults);
-                    }
-                  }
-                }}
-              />
+              <div className="row">
+                <div className="col-10">
+                  <input
+                    type="text"
+                    name="key-result"
+                    placeholder={`What do I need to acomplish ${
+                      number ? `in the ${number}st ${time}` : `on ${time}`
+                    } to achieve my 1 year goal?`}
+                    defaultValue={result.text}
+                    onChange={(e) => {
+                      const stateCopy = keyResults;
+                      stateCopy[index].text = e.target.value;
+                      setKeyResults(stateCopy);
+                    }}
+                  />
+                </div>
+                <div className="col-2">
+                  <RiDeleteBin6Line
+                    color={theme.color.primary}
+                    className={keyResults.length === 1 ? 'd-none' : 'mt-2 mr-4'}
+                    onClick={() => {
+                      if (keyResults.length > 1) {
+                        const newKeyResults = [...keyResults];
+                        if (index !== -1) {
+                          newKeyResults.splice(index, 1);
+                          setKeyResults(newKeyResults);
+                        }
+                      }
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           );
         })}
@@ -86,7 +92,7 @@ const keyResult = ({ keyResults, setKeyResults, number, time }) => {
           font-weight: bold;
         }
         input {
-          width: 90%;
+          width: 100%;
           border: none;
           padding: 0.5rem;
           border-radius: ${theme.sizing.border.small};
