@@ -1,9 +1,110 @@
+import { useContext, useState } from 'react';
 import Layout from '../../components/Layout';
 import Card from '../../components/goal/card';
 import Numbers from '../../components/landingpage/numbers';
-import Cardoption from '../../components/goal/cardOption'
+import Cardoption from '../../components/goal/cardOption';
+import GoalContext from '../../components/goal/goalContext';
+import axios from 'axios';
 
 const success = () => {
+  const {
+    monday,
+    tuesday,
+    wednesday,
+    thursday,
+    friday,
+    saturday,
+    sunday,
+  } = useContext(GoalContext);
+
+  const [error, setError] = useState({
+    error: false,
+    text: '',
+  });
+
+  const downloadURI = (uri, name) => {
+    let link = document.createElement('a');
+    link.download = name;
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleExportCSV = async () => {
+    const url = document.location.origin + '/api';
+    const tasks = [];
+    monday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    tuesday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    wednesday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    thursday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    friday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    saturday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    sunday.forEach((task) => {
+      if (task.text !== '') {
+        tasks.push({
+          content: task.text,
+        });
+      }
+    });
+    try {
+      const data = await axios.post(url + '/export', {
+        method: 'csv',
+        tasks,
+      });
+      if (data.status !== 200) {
+        setError({
+          error: true,
+          text:
+            'There was an error generating your csv. Please try again later',
+        });
+      }
+    } catch (error) {
+      setError({
+        error: true,
+        text: 'There was an error generating your csv. Please try again later',
+      });
+    } finally {
+      downloadURI('/tmp/todos.csv', 'your-daily-goals.csv');
+      axios.post(url + '/deleteCSV');
+    }
+  };
   return (
     <Layout>
       <Card>
@@ -37,35 +138,45 @@ const success = () => {
           <div className="row">
             <div className="col">
               <h3>
-                Now you can export your tasks for the upcoming week to <img src="/todoist.png" alt="" />
-              </h3>  
-                <p>todoist is a great task managments tool and you can download it <a href="https://todoist.com/de"><u>here!</u> </a> <br/>
-                 To export you tasks we offer you to options! Choose the one that you like the most!
-                </p>
+                Now you can export your tasks for the upcoming week to{' '}
+                <img src="/todoist.png" alt="" />
+              </h3>
+              <p>
+                todoist is a great task managments tool and you can download it{' '}
+                <a href="https://todoist.com/de">
+                  <u>here!</u>{' '}
+                </a>{' '}
+                <br />
+                To export you tasks we offer you two options! Choose the one
+                that you like the most!
+              </p>
             </div>
           </div>
-         
-          
-
-        
-
-          <div className="row">
-            
+        </div>
+        {error.error && (
+          <div className="row fade-in">
+            <div className="col mx-5 danger">
+              <p>{error.text}</p>
+            </div>
+          </div>
+        )}
+        <div className="row">
+          <div className="col-md-6">
+            <Cardoption
+              cardtitle="Export with CSV"
+              cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
+              buttontext="Export to "
+              handleClick={handleExportCSV}
+            />
+          </div>
+          <div className="col-md-6">
+            <Cardoption
+              cardtitle="Export with API Key"
+              cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
+              buttontext="Export to "
+            />
           </div>
         </div>
-        <div className="container my-5"></div>
-
-       
-        <Cardoption 
-          cardtitle="Export with CSV"
-          cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
-          buttontext="Export to "
-        />
-         <Cardoption 
-          cardtitle="Export with API Key"
-          cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
-          buttontext="Export to "
-        />
         <Numbers
           title="Next Steps"
           stepOneTitle="Export your tasks"
@@ -79,22 +190,27 @@ const success = () => {
         <div className="container my-5 mx-5">
           <div className="row">
             <div className="col">
-              <h3>
-              Give us Feedback
-              </h3>  
-                <p>We would love to get your feedback and would like to understand how we can improve this tool!
-                </p>
-                <div className="col">
-                  <button>
-                  <a href="https://luca142.typeform.com/to/VcniyZ">Start Questionary</a>
-                  </button>
-                </div>
+              <h3>Give us Feedback</h3>
+              <p>
+                We would love to get your feedback and would like to understand
+                how we can improve this tool!
+              </p>
+              <div className="col">
+                <button>
+                  <a href="https://luca142.typeform.com/to/VcniyZ">
+                    Start Questionary
+                  </a>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-
-        
       </Card>
+      <style jsx>{`
+        .danger {
+          background-color: red;
+        }
+      `}</style>
     </Layout>
   );
 };
