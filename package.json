@@ -2,13 +2,12 @@
   "name": "with-firebase-auth-serverless",
   "version": "1.0.0",
   "engines": {
-    "node": "12.16.x"
+    "node": "10"
   },
   "scripts": {
     "dev": "NODE_ENV=development next dev",
     "build": "NODE_ENV=production next build",
-    "start": "NODE_ENV=production next start",
-    "heroku-postbuild": "npm run build"
+    "start": "NODE_ENV=production next start"
   },
   "dependencies": {
     "axios": "^0.19.2",
