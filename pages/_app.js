@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import App from 'next/app';
 import GoalContext from '../components/goal/goalContext';
 
 function MyApp({ Component, pageProps }) {
