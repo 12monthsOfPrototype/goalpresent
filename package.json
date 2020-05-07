@@ -5,9 +5,9 @@
     "node": "12"
   },
   "scripts": {
-    "dev": "NODE_ENV=developmentÌ node server.js",
+    "dev": "NODE_ENV=developmentÌ next start",
     "build": "NODE_ENV=production next build",
-    "start": "NODE_ENV=production node server.js -p $PORT"
+    "start": "next start"
   },
   "dependencies": {
     "next": "^9.0.6",
