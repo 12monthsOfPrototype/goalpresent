@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "NODE_ENV=developmentÌ node server.js",
     "build": "NODE_ENV=production next build",
-    "start": "NODE_ENV=production node server.js"
+    "start": "NODE_ENV=production node server.js -p $PORT"
   },
   "dependencies": {
     "next": "^9.0.6",
