@@ -2,7 +2,7 @@
   "name": "with-firebase-auth-serverless",
   "version": "1.0.0",
   "engines": {
-    "node": "10"
+    "node": "12"
   },
   "scripts": {
     "dev": "NODE_ENV=development next dev",
