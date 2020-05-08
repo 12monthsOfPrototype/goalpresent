@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { v4 as uuid } from 'uuid';
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
 const baseURL = 'https://api.todoist.com/rest/v1/tasks';
 
@@ -19,8 +19,7 @@ export default (req, res) => {
     res.status = 200;
     res.end('Success');
   } else {
-    const csvWriter = createCsvWriter({
-      path: 'public/tmp/todos.csv',
+    const csvStringifier = createCsvStringifier({
       header: [
         { id: 'type', title: 'TYPE' },
         { id: 'content', title: 'CONTENT' },
@@ -39,10 +38,10 @@ export default (req, res) => {
       });
     });
 
-    csvWriter.writeRecords(data).then(() => {
-      res.status = 200;
-      res.end('Success');
-    });
+    res.status = 200;
+    res.send(
+      csvStringifier.getHeaderString() + csvStringifier.stringifyRecords(data)
+    );
 
     //TODO: Clean up after csv was downloaded
   }
