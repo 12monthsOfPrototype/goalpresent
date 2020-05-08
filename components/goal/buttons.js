@@ -29,7 +29,7 @@ const buttons = ({ nextLink, hasBackButton }) => {
       </div>
       <style jsx>{`
         a {
-          color: white !important;
+          color: white !important
           font-size: 1.5rem;
         }
 
