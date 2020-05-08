@@ -34,12 +34,18 @@ const Layout = ({ children }) => {
             color: ${theme.color.text};
           }
 
+          a:hover {
+            color: white;
+            text-decoration: none;
+          }
+
           h1 {
             font-family: Helvetica;
             font-style: normal;
             font-weight: bold;
             font-size: 55px;
             line-height: 66px;
+            font-weight: 500;
           }
 
           .color-primary {
@@ -47,7 +53,7 @@ const Layout = ({ children }) => {
           }
 
           .fade-in {
-            animation: fadein 2s;
+            animation: fadein 1s;
           }
 
           footer {

@@ -1,23 +1,44 @@
 import Layout from '../components/Layout';
-import Stepps from '../components/landingpage/Stepps';
-import Hero from '../components/landingpage/Hero';
-import Numbers from '../components/landingpage/Numbers';
+import Link from 'next/link';
 
 const index = () => {
   return (
     <>
       <Layout>
-        <Hero />
-        <Stepps />
-        <Numbers
-          title="How it works?"
-          stepOneTitle="Set your goals and break them down"
-          stepOneDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
-          stepTwoTitle="Set your goals and break them down"
-          stepTwoDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
-          stepThreeTitle="Set your goals and break them down"
-          stepThreeDescription="Excepteur consequat ea reprehenderit nulla excepteur nulla velit."
-        />
+        <section className="container my-5 py-5">
+          <div className="row">
+            <div className="col-md-6 fade-in text-center">
+              <h1 className="mb-3">
+                Setting Goals <br />
+                that <span className="color-primary">matter.</span>
+              </h1>
+              <p className="w-75 m-auto">
+                Plan your goals in a smart system, break them down into small
+                chuncks and export them to todoist.
+              </p>
+              <div className="d-inline-block mt-5">
+                <button className="mr-4">Learn more</button>
+                <button>
+                  <Link href="/goal">Start planning</Link>
+                </button>
+              </div>
+            </div>
+            <div className="col-md-6 text-center">
+              <img
+                src="/goalpresent.png"
+                alt="goalpresent"
+                className="img-fluid m-auto w-75"
+              />
+            </div>
+          </div>
+        </section>
+        <section className="container my-5 py-5">
+          <div className="row">
+            <div className="col-md-6">
+              <img src="" alt="" />
+            </div>
+          </div>
+        </section>
       </Layout>
     </>
   );
