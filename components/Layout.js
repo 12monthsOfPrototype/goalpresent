@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { theme } from '../style/theme';
+import Link from 'next/link';
 
 const Layout = ({ children }) => {
   return (
@@ -11,7 +12,22 @@ const Layout = ({ children }) => {
         />
       </Head>
       <main>{children}</main>
-      <footer></footer>
+      <footer>
+        <div>&copy; 12MonthsOfPrototype 2020</div>
+        <div>
+          This project was made in the second month of{' '}
+          <a href="http://www.12monthsofprototype.tech">12MonthsOfPrototype</a>
+        </div>
+        <div>
+          <a
+            href="https://www.12monthsofprototype.tech/imprint"
+            className="mr-4"
+          >
+            Imprint
+          </a>
+          <Link href="/data-privacy">Datenschutz</Link>
+        </div>
+      </footer>
       <style jsx global>
         {`
           body {
@@ -59,6 +75,11 @@ const Layout = ({ children }) => {
           footer {
             background-color: ${theme.color.primary};
             height: 5vh;
+            display: flex;
+            justify-content: space-between;
+            padding: 0rem 1rem;
+            align-items: center;
+            color: white;
           }
 
           @keyframes fadein {
