@@ -6,6 +6,7 @@ import Cardoption from '../../components/goal/cardOption';
 import GoalContext from '../../components/goal/goalContext';
 import axios from 'axios';
 import Modal from 'react-modal';
+import { theme } from '../../style/theme';
 
 const customStyles = {
   content: {
@@ -35,16 +36,18 @@ const success = () => {
     error: false,
     text: '',
   });
+  const [loading, setLoading] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [apiKey, setApiKey] = useState('');
 
-  const downloadURI = (uri, name) => {
-    let link = document.createElement('a');
-    link.download = name;
-    link.href = uri;
-    document.body.appendChild(link);
+  const downloadURI = (csvContent) => {
+    var encodedUri = encodeURI(csvContent);
+    var link = document.createElement('a');
+    link.setAttribute('href', encodedUri);
+    link.setAttribute('download', 'my_data.csv');
+    document.body.appendChild(link); // Required for FF
+
     link.click();
-    document.body.removeChild(link);
   };
 
   const generateTaskArray = () => {
@@ -102,6 +105,7 @@ const success = () => {
   };
 
   const handleExportCSV = async () => {
+    setLoading(true);
     const url = document.location.origin + '/api';
     const tasks = generateTaskArray();
     try {
@@ -116,18 +120,19 @@ const success = () => {
             'There was an error generating your csv. Please try again later',
         });
       }
+      downloadURI('data:text/csv;charset=utf-8,' + data.data);
     } catch (error) {
       setError({
         error: true,
         text: 'There was an error generating your csv. Please try again later',
       });
     } finally {
-      downloadURI('/tmp/todos.csv', 'your-daily-goals.csv');
-      axios.post(url + '/deleteCSV');
+      setLoading(false);
     }
   };
 
   const handleExportWithKey = async () => {
+    setLoading(true);
     const url = document.location.origin + '/api';
     const tasks = generateTaskArray();
     try {
@@ -151,6 +156,7 @@ const success = () => {
       setIsOpen(false);
     } finally {
       setIsOpen(false);
+      setLoading(false);
     }
   };
   return (
@@ -206,6 +212,14 @@ const success = () => {
             <div className="col mx-5 danger">
               <p>{error.text}</p>
             </div>
+          </div>
+        )}
+        {loading && (
+          <div className="loader">
+            <div className="circle"></div>
+            <div className="circle"></div>
+            <div className="circle"></div>
+            <div className="circle"></div>
           </div>
         )}
         <div className="row">
@@ -292,6 +306,51 @@ const success = () => {
       <style jsx>{`
         .danger {
           background-color: red;
+        }
+
+        .loader {
+          top: 50%;
+          left: 50%;
+          display: flex;
+          justify-content: center;
+        }
+
+        .circle {
+          width: 20px;
+          height: 20px;
+          background-color: ${theme.color.primary};
+          border-radius: 20px;
+          margin-right: 10px;
+          animation: fadeinAndOut 1.2s infinite;
+          animation-fill-mode: both;
+        }
+
+        @keyframes fadeinAndOut {
+          0% {
+            opacity: 1;
+            transform: translateX(0px);
+          }
+          50% {
+            opacity: 0.1;
+            transform: translateX(3px) translateY(-3px);
+          }
+          100%: {
+            opacity: 1;
+            transform: translateX(0px);
+          }
+        }
+
+        .circle:first-child {
+          animation-delay: 0s;
+        }
+        .circle:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        .circle:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+        .circle:nth-child(4) {
+          animation-delay: 0.6s;
         }
       `}</style>
     </Layout>
