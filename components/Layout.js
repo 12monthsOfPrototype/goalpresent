@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { theme } from '../style/theme';
+import CookieConsent from 'react-cookie-consent';
 
 const Layout = ({ children }) => {
   return (
@@ -12,6 +13,28 @@ const Layout = ({ children }) => {
       </Head>
       <main>{children}</main>
       <footer></footer>
+      <CookieConsent
+        location="bottom"
+        buttonText="I agree"
+        cookieName="myAwesomeCookieName2"
+        style={{ background: theme.color.background.secondary }}
+        buttonStyle={{
+          color: '#fff',
+          fontSize: '13px',
+          background: theme.color.primary,
+          borderRadius: theme.sizing.border.small,
+        }}
+        declineButtonStyle={{
+          color: '#fff',
+          fontSize: '13px',
+          background: theme.color.background.primary,
+          borderRadius: theme.sizing.border.small,
+        }}
+        enableDeclineButton
+        expires={150}
+      >
+        🍪 This website uses cookies to enhance the user experience.
+      </CookieConsent>
       <style jsx global>
         {`
           body {
