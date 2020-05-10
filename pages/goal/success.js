@@ -222,24 +222,26 @@ const success = () => {
             <div className="circle"></div>
           </div>
         )}
-        <div className="row">
-          <div className="col-md-6">
-            <Cardoption
-              cardtitle="Export with CSV"
-              cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
-              buttontext="Export to "
-              handleClick={handleExportCSV}
-            />
-          </div>
-          <div className="col-md-6">
-            <Cardoption
-              cardtitle="Export with API Key"
-              cardtext="Enter your api key and let us do the magic to add them to your todoist app. We never save your key."
-              buttontext="Export to "
-              handleClick={() => {
-                setIsOpen(true);
-              }}
-            />
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6 d-flex justify-content-center">
+              <Cardoption
+                cardtitle="Export with CSV"
+                cardtext="Download your tasks in a CSV and import them in todoist. you can find a step by step guide here"
+                buttontext="Export to "
+                handleClick={handleExportCSV}
+              />
+            </div>
+            <div className="col-md-6 d-flex justify-content-center">
+              <Cardoption
+                cardtitle="Export with API Key"
+                cardtext="Enter your api key and let us do the magic to add them to your todoist app. We never save your key."
+                buttontext="Export to "
+                handleClick={() => {
+                  setIsOpen(true);
+                }}
+              />
+            </div>
           </div>
         </div>
         <Numbers
