@@ -102,7 +102,7 @@ const goalsTop = ({ children }) => {
       {secondMonthKeyResults.map((result) => {
         if (result.text) {
           return (
-            <div className="row fadeInDown">
+            <div className="row fadeInDown mb-2 pb-2">
               <div className="offset-3 col  px-5">
                 <div
                   className="card my-1"
@@ -123,7 +123,7 @@ const goalsTop = ({ children }) => {
       {thirdMonthKeyResults.map((result) => {
         if (result.text) {
           return (
-            <div className="row fadeInDown">
+            <div className="row fadeInDown mb-2 pb-2">
               <div className="offset-3 col  px-5">
                 <div
                   className="card my-1"
@@ -144,7 +144,7 @@ const goalsTop = ({ children }) => {
       {fourthMonthKeyResults.map((result) => {
         if (result.text) {
           return (
-            <div className="row fadeInDown">
+            <div className="row fadeInDown mb-2 pb-2">
               <div className="offset-3 col  px-5">
                 <div
                   className="card my-1"
@@ -165,7 +165,7 @@ const goalsTop = ({ children }) => {
       {secondQuarterKeyResult.map((result) => {
         if (result.text) {
           return (
-            <div className="row fadeInDown">
+            <div className="row fadeInDown mb-2 pb-2">
               <div className="offset-2 col  px-5">
                 <div
                   className="card my-1"
@@ -186,7 +186,7 @@ const goalsTop = ({ children }) => {
       {thirdQuarterKeyResults.map((result) => {
         if (result.text) {
           return (
-            <div className="row fadeInDown">
+            <div className="row fadeInDown mb-2 pb-2">
               <div className="offset-2 col  px-5">
                 <div
                   className="card my-1"
@@ -208,7 +208,7 @@ const goalsTop = ({ children }) => {
       {secondKeyResults.map((result) => {
         if (result.text) {
           return (
-            <div className="row fadeInDown">
+            <div className="row fadeInDown mb-2 pb-2">
               <div className="offset-1 col  px-5">
                 <div
                   className="card my-1"
@@ -229,7 +229,7 @@ const goalsTop = ({ children }) => {
       {thirdKeyResults.map((result) => {
         if (result.text) {
           return (
-            <div className="row fadeInDown">
+            <div className="row fadeInDown mb-2 pb-2">
               <div className="offset-1 col  px-5">
                 <div
                   className="card my-1"
@@ -250,7 +250,7 @@ const goalsTop = ({ children }) => {
       {fourthKeyResults.map((result) => {
         if (result.text) {
           return (
-            <div className="row fadeInDown">
+            <div className="row fadeInDown mb-2 pb-2">
               <div className="offset-1 col  px-5">
                 <div
                   className="card my-1"
