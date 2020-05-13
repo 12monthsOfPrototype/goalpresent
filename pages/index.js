@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import Link from 'next/link';
+import {theme} from '../style/theme'
 
 const index = () => {
   return (
@@ -35,11 +36,58 @@ const index = () => {
         <section className="container my-5 py-5">
           <div className="row">
             <div className="col-md-6">
-              <img src="" alt="" />
+              <img 
+                src="stepone.png" 
+                alt="goalpresent" 
+                className="img-fluid m-auto w-75"
+              />
             </div>
+            
+
+            <div className="col-md-6">
+              <h2 className="mb-3">
+                Set a longterm Goal for <br/> the next year
+              </h2>
+              
+              <div className="line"/>
+              <p>
+                What is a longterm goal, you always wanted to achieve? Write it down. 
+                Be as specific as possible of what you want to achieve. Your Goal should be:
+              </p>
+              <ul>
+                <li>Realistic - Is it realistic to achieve the goal in one year?</li>
+                <li>Specific - How can you be more detailed about the goal?</li>
+                <li>Actionable - Can you take action on the longterm goal?</li>
+              </ul>
+            </div>
+            
+            
           </div>
+          
         </section>
+
       </Layout>
+      <style jsx>
+        {`
+        .line {
+          background-color: ${theme.color.primary};
+          width: 10%;
+          height: 0.2rem;
+          margin-bottom: 1rem;
+        }
+        ul {
+          list-style: none;
+          margin-left: -2.8rem;
+
+        }
+        ul > li {
+          background: url('Check.png') no-repeat left top;
+          height: 54px;
+          padding-left: 44px;
+          padding-top: 3px;
+        }
+        `}
+      </style>
     </>
   );
 };

@@ -46,6 +46,8 @@ const Layout = ({ children }) => {
           h4,
           h5,
           p,
+          ul,
+          li,
           a {
             color: ${theme.color.text};
           }
