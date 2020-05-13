@@ -93,6 +93,45 @@ const index = () => {
             </div>
           </div>
         </section>
+        <section className="container my-5 py-5">
+          <div className="row">
+            <div className="col-md-6">
+              <img 
+                src="stepthree.png" 
+                alt="goalpresent" 
+                className="img-fluid m-auto w-75"
+              />
+            </div>
+            <div className="col-md-6">
+              <h2 className="mb-3">
+                Export them to the <br/> todoist App
+              </h2>
+              
+              <div className="line"/>
+              <p>
+                Once you have planned your goal for the whole year, you have the opportunity to export them to the task managment tool todoist.  
+              </p>
+              
+            </div> 
+            
+          </div>
+        </section>
+        <section>
+            <div className="text-center">
+              <h1>
+                Let’s achieve more.<span className="color-primary"> Together.</span>
+              </h1>
+              <p>
+                Start now, plan your goals and achieve more! 
+              </p>
+              <div className="d-inline-block mt-5">
+                
+                <button>
+                  <Link href="/goal">Start planning</Link>
+                </button>
+              </div>
+            </div>
+        </section>
 
       </Layout>
       <style jsx>
@@ -113,6 +152,10 @@ const index = () => {
           height: 40px;
           padding-left: 44px;
           padding-top: 3px;
+        }
+        button {
+          margin-bottom: 3rem;
+          text-align: center;
         }
         `}
       </style>
