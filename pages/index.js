@@ -59,11 +59,39 @@ const index = () => {
                 <li>Specific - How can you be more detailed about the goal?</li>
                 <li>Actionable - Can you take action on the longterm goal?</li>
               </ul>
-            </div>
-            
-            
+            </div> 
           </div>
-          
+        </section>
+        <section className="container my-5 py-5">
+          <div className="row">
+            
+            <div className="col-md-6">
+              <h2 className="mb-3">
+                Break them down into  <br/> small achievable Tasks
+              </h2>
+              
+              <div className="line"/>
+              <p>
+                Once you have set a one year goal for yourself, start breaking them down into 
+                smaller goals that lead to the longterm goal. Set goals for each quarter, month, 
+                week and day. The system helps you focus on the small daily goals to lead to the 
+                bigger goal. 
+              </p>
+              <ul>
+                <li>From yearly goals into quarterly goals</li>
+                <li>From quarterly goals into monthly goals</li>
+                <li>From monthly goals into weekly goals</li>
+                <li>From weekly goals into daily goals </li>
+              </ul>
+            </div> 
+            <div className="col-md-6">
+              <img 
+                src="steptwo.png" 
+                alt="goalpresent" 
+                className="img-fluid m-auto w-75"
+              />
+            </div>
+          </div>
         </section>
 
       </Layout>
@@ -82,7 +110,7 @@ const index = () => {
         }
         ul > li {
           background: url('Check.png') no-repeat left top;
-          height: 54px;
+          height: 40px;
           padding-left: 44px;
           padding-top: 3px;
         }
