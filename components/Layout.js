@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { theme } from '../style/theme';
+import Link from 'next/link';
 import CookieConsent from 'react-cookie-consent';
+
 
 const Layout = ({ children }) => {
   return (
@@ -11,8 +13,22 @@ const Layout = ({ children }) => {
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
         />
       </Head>
-      <main>{children}</main>
-      <footer></footer>
+      <footer>
+        <div>&copy; 12MonthsOfPrototype 2020</div>
+        <div>
+          This project was made in the second month of{' '}
+          <a href="http://www.12monthsofprototype.tech">12MonthsOfPrototype</a>
+        </div>
+        <div>
+          <a
+            href="https://www.12monthsofprototype.tech/imprint"
+            className="mr-4"
+          >
+            Imprint
+          </a>
+          <Link href="/data-privacy">Datenschutz</Link>
+        </div>
+      </footer>
       <CookieConsent
         location="bottom"
         buttonText="I agree"
@@ -53,8 +69,15 @@ const Layout = ({ children }) => {
           h4,
           h5,
           p,
+          ul,
+          li,
           a {
             color: ${theme.color.text};
+          }
+
+          a:hover {
+            color: white;
+            text-decoration: none;
           }
 
           h1 {
@@ -63,6 +86,7 @@ const Layout = ({ children }) => {
             font-weight: bold;
             font-size: 55px;
             line-height: 66px;
+            font-weight: 500;
           }
 
           .color-primary {
@@ -70,12 +94,17 @@ const Layout = ({ children }) => {
           }
 
           .fade-in {
-            animation: fadein 2s;
+            animation: fadein 1s;
           }
 
           footer {
             background-color: ${theme.color.primary};
             height: 5vh;
+            display: flex;
+            justify-content: space-between;
+            padding: 0rem 1rem;
+            align-items: center;
+            color: white;
           }
 
           @keyframes fadein {
