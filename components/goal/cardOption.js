@@ -4,7 +4,7 @@ const cardoption = ({ cardtitle, cardtext, buttontext, handleClick }) => {
   return (
     <>
       <div className="cardoption">
-        <div className="card w-20">
+        <div className="card">
           <div className="card-body">
             <h4 className="cardtitle">{cardtitle}</h4>
             <p className="cardtext">{cardtext}</p>

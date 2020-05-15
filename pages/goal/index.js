@@ -30,9 +30,8 @@ const index = () => {
                 onChange={(e) => {
                   setGoal(e.target.value);
                 }}
-              >
-                {goal}
-              </textarea>
+                defaultChecked={goal}
+              ></textarea>
               <Buttons
                 nextLink="/goal/quarter#dates"
                 hasBackButton={false}

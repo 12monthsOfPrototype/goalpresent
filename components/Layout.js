@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import { theme } from '../style/theme';
 import Link from 'next/link';
+import CookieConsent from 'react-cookie-consent';
+
 
 const Layout = ({ children }) => {
   return (
@@ -11,7 +13,6 @@ const Layout = ({ children }) => {
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
         />
       </Head>
-      <main>{children}</main>
       <footer>
         <div>&copy; 12MonthsOfPrototype 2020</div>
         <div>
@@ -28,6 +29,28 @@ const Layout = ({ children }) => {
           <Link href="/data-privacy">Datenschutz</Link>
         </div>
       </footer>
+      <CookieConsent
+        location="bottom"
+        buttonText="I agree"
+        cookieName="myAwesomeCookieName2"
+        style={{ background: theme.color.background.secondary }}
+        buttonStyle={{
+          color: '#fff',
+          fontSize: '13px',
+          background: theme.color.primary,
+          borderRadius: theme.sizing.border.small,
+        }}
+        declineButtonStyle={{
+          color: '#fff',
+          fontSize: '13px',
+          background: theme.color.background.primary,
+          borderRadius: theme.sizing.border.small,
+        }}
+        enableDeclineButton
+        expires={150}
+      >
+        🍪 This website uses cookies to enhance the user experience.
+      </CookieConsent>
       <style jsx global>
         {`
           body {
