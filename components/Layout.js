@@ -13,6 +13,7 @@ const Layout = ({ children }) => {
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
         />
       </Head>
+   	<main>{children}</main>
       <footer>
         <div>&copy; 12MonthsOfPrototype 2020</div>
         <div>
