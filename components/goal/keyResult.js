@@ -19,9 +19,8 @@ const keyResult = ({ keyResults, setKeyResults, number, time }) => {
               my 1 year goal?
             </p>
             <small>
-              Eiusmod in mollit in ex nisi sint eu sunt ipsum voluptate dolore
-              id anim. Eiusmod in mollit in ex nisi sint eu sunt ipsum voluptate
-              dolore id anim.
+              Write down a result, that you need to achieve in order to achieve your 1 year goal. 
+              Try to be Realistic and Specific. Try to write down an actionable step in order to achieve your 1 year goal.
             </small>
           </div>
         </div>
