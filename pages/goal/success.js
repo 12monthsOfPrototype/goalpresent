@@ -195,8 +195,7 @@ const success = () => {
                 Now you can export your tasks for the upcoming week to todoist 
               </h3>
               <p>
-                todoist is a great task managments tool and you can download it{' '}
-                <a href="https://todoist.com/de">
+                todoist is a great task managments tool and you can download it
                   <u>here!</u>{' '}
                 </a>{' '}
                 <br />
