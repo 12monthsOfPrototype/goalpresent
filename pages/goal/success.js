@@ -192,8 +192,7 @@ const success = () => {
           <div className="row">
             <div className="col">
               <h3>
-                Now you can export your tasks for the upcoming week to{' '}
-                <img src="/todoist.png" alt="" />
+                Now you can export your tasks for the upcoming week to todoist 
               </h3>
               <p>
                 todoist is a great task managments tool and you can download it{' '}
